@@ -14,7 +14,7 @@ It uses <a href="https://github.com/patriksimek/co-mssql">node-mssql</a> thunk w
 </ul>
 
 <h2>Usage</h2>
-Configuration is straightforward and you use it as any other middleware. First param it accepts is a node-mssql module, second is a db options hash passed to node-mysql module when connection or pool are created. The third is string defining strategy type.
+Configuration is straightforward and you use it as any other middleware. First param it accepts is a db options hash passed to co-mssql module when connection or pool are created. The second is a string defining strategy type.
 
 <pre>
 // app.js
