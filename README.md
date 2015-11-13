@@ -7,15 +7,19 @@ It uses <a href="https://github.com/patriksimek/co-mssql">node-mssql</a> thunk w
 
 <h2>Strategies</h2>
 
-single - creates single database connection for an application instance. Connection is never closed. In case of disconnection it will try to reconnect again.
-pool - creates pool of connections on an app instance level, and serves a single connection from pool per request. The connections is auto released to the pool at the response end.
-request - creates new connection per each request, and automatically closes it at the response end.
-Usage
+<ul>
+<li><strong>single</strong> - creates single database connection for an application instance. Connection is never closed. In case of disconnection it will try to reconnect again.</li>
+<li><strong>pool</strong> - creates pool of connections on an app instance level, and serves a single connection from pool per request. The connections is auto released to the pool at the response end.</li>
+<li><strong>request</strong> - creates new connection per each request, and automatically closes it at the response end.</li>
+</ul>
 
+<h2>Usage</h2>
 Configuration is straightforward and you use it as any other middleware. First param it accepts is a node-mssql module, second is a db options hash passed to node-mysql module when connection or pool are created. The third is string defining strategy type.
 
 <pre>
 // app.js
+...
+var connection  = require('express-mssqlconnection');
 ...
 app.use(
     connection({
@@ -38,7 +42,7 @@ app.use(
 ...
 </pre>
 
-express-mssqlconnection extends request object with getConection(callback) function, this way connection instance can be accessed anywhere in routers during request/response life cycle:
+<strong>express-mssqlconnection</strong> extends request object with getConection(callback) function, this way connection instance can be accessed anywhere in routers during request/response life cycle:
 
 <pre>
 // myroute.js
