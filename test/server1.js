@@ -75,7 +75,8 @@ describe('Test suite for express-mssqlconnection - Pool Mode', function() {
           data += d;
         });
         res.on('end', function() {
-          assert.equal(data,"{\"count\":2087,\"error\":null}");
+          var jsonObject = JSON.parse(data);
+          assert( jsonObject.count > 0, 'Object count in db object is not OK' );
           done();
         });    
         }).on('error', function(e) {
@@ -95,7 +96,8 @@ describe('Test suite for express-mssqlconnection - Pool Mode', function() {
         });
 
         res.on('end', function() {
-          assert.equal(data,"{\"count\":2087,\"error\":null}");
+          var jsonObject = JSON.parse(data);
+          assert( jsonObject.count > 0, 'Object count in db object is not OK' );
           done();
         });
         

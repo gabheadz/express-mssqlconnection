@@ -72,16 +72,14 @@ describe('Test suite for express-mssqlconnection - Request Mode', function() {
 		co(function * () {
       var data = "";
       http.get('http://localhost:8083/api/test', function(res) {
-
         res.on('data', function(d) {
           data += d;
         });
-
         res.on('end', function() {
-          assert.equal(data,"{\"count\":2087,\"error\":null}");
+          var jsonObject = JSON.parse(data);
+          assert( jsonObject.count > 0, 'Object count in db object is not OK' );
           done();
         });
-        
         }).on('error', function(e) {
           console.log('\terror invoking /api/test', e);
         });    
@@ -93,16 +91,14 @@ describe('Test suite for express-mssqlconnection - Request Mode', function() {
 		co(function * () {
       var data = "";
       http.get('http://localhost:8083/api/test', function(res) {
-
         res.on('data', function(d) {
           data += d;
         });
-
         res.on('end', function() {
-          assert.equal(data,"{\"count\":2087,\"error\":null}");
+          var jsonObject = JSON.parse(data);
+          assert( jsonObject.count > 0, 'Object count in db object is not OK' );
           done();
         });
-        
         }).on('error', function(e) {
           console.log('\terror invoking /api/test', e);
         });    
