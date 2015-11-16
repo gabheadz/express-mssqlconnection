@@ -52,13 +52,19 @@ module.exports = function(req, res, next) {
     req.getConnection(function(err, connection) {
       if (err) return next(err);
 
-      connection.query('SELECT 1 AS RESULT', [], function(err, results) {
-        if (err) return next(err);
-
-        results[0].RESULT;
-        // -> 1
-
-        res.send(200);
+      co( function * () {
+        try {
+          var response = {};
+          var request = new sql.Request(connection);
+          var recordset = yield request.query('SELECT count(1) as numofrecords FROM dbo.mytable ');
+          response.count = recordset[0].numofrecords;
+          res.status(200).json(response); 
+        }
+        catch(err) {
+          console.log('error submiting command to db', err);
+          var response = { "error": err };
+          res.status(500).json(response);  
+        }
       });
 
     });
