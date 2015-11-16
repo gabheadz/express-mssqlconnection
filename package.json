@@ -1,0 +1,43 @@
+{
+	"author": {
+		"name": "Gabriel Martinez",
+		"url": "https://github.com/gabheadz"
+	},
+	"name": "express-mssqlconnection",
+	"description": "Connect/Express middleware that auto provides mssql connections",
+	"keywords": [
+		"database",
+		"mssql",
+		"sql",
+		"msnodesql",
+		"sqlserver",
+		"tds",
+		"node-tds",
+		"tedious",
+		"node-sqlserver",
+		"sqlserver",
+		"co",
+		"generators",
+		"yield"
+	],
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/gabheadz/express-mssqlconnection"
+	},
+	"license": "MIT",
+	"dependencies": {
+    "co": "^4.6.0",
+		"co-mssql": "^1.2.1",
+    "generic-pool": "^2.0.0"
+	},
+	"devDependencies": {
+		"mocha": "^2.1.0"
+	},
+	"engines": {
+		"node": ">=0.11"
+	},
+	"scripts": {
+		"test": "mocha --harmony"
+  }
+}
